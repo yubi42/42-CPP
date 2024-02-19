@@ -6,12 +6,12 @@
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 13:52:26 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/11 18:55:33 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/02/12 21:04:55 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-#define ZOMBIE_H
+#ifndef FIXED_H
+#define FIXED_H
 
 #include <iostream>
 #include <cmath>
