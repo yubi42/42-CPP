@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 13:52:26 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/12 20:55:34 by yubi42           ###   ########.fr       */
+/*   Created: 2024/02/15 19:28:22 by yubi42            #+#    #+#             */
+/*   Updated: 2024/02/15 21:22:24 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_H
-#define FIXED_H
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
-#include <iostream>
+#include "ClapTrap.hpp"
 
-class Fixed
+class ScavTrap : public ClapTrap
 {
 private:
-    int	value;
-	static const int fract_bits = 8;
-
+    
 public:
-    Fixed(void);
-    Fixed(const Fixed& cpy);
-    ~Fixed();
-
-    void setRawBits( int const raw );
-    int getRawBits( void ) const;
-    Fixed& operator=(const Fixed& src);
-
+    ScavTrap(std::string name);
+    ~ScavTrap();
+    void attack(const std::string& target);
+    void guardGate(void);
 };
 
 #endif

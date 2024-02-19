@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 13:52:26 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/12 20:55:34 by yubi42           ###   ########.fr       */
+/*   Created: 2024/02/19 10:49:23 by yubi42            #+#    #+#             */
+/*   Updated: 2024/02/19 13:05:25 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_H
-#define FIXED_H
 
-#include <iostream>
+#ifndef DIAMONDTRAP_HPP
+#define DIAMONDTRAP_HPP
 
-class Fixed
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+
+class DiamondTrap : public virtual ScavTrap, public virtual FragTrap
 {
 private:
-    int	value;
-	static const int fract_bits = 8;
-
+    std::string name;
 public:
-    Fixed(void);
-    Fixed(const Fixed& cpy);
-    ~Fixed();
-
-    void setRawBits( int const raw );
-    int getRawBits( void ) const;
-    Fixed& operator=(const Fixed& src);
-
+    DiamondTrap(std::string name);
+    ~DiamondTrap();
+    void attack(const std::string& target);
+    void whoAmI(void);
 };
 
 #endif
