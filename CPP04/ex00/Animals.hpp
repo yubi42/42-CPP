@@ -1,29 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   Animals.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/18 20:00:05 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/19 18:21:37 by yubi42           ###   ########.fr       */
+/*   Created: 2024/02/29 00:33:25 by yubi42            #+#    #+#             */
+/*   Updated: 2024/02/29 17:05:22 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-#define FRAGTRAP_HPP
+#ifndef ANIMALS_HPP
+#define ANIMALS_HPP
 
-#include "ClapTrap.hpp"
 
-class FragTrap : public virtual ClapTrap
+#include <iostream>
+#include <string>
+
+class Animal
 {
-private:
+protected:
+    std::string type;
     
 public:
-    FragTrap(std::string name);
-    ~FragTrap();
-    void attack(const std::string& target);
-    void highFivesGuys(void);
+    Animal();
+    virtual ~Animal();
+    std::string getType();
+    virtual void makeSound() const;
+};
+
+class Dog : public Animal
+{
+public:
+    Dog();
+    ~Dog();
+    void makeSound() const;
+};
+
+class Cat : public Animal
+{
+public:
+    Cat();
+    ~Cat();
+    void makeSound() const;
 };
 
 #endif

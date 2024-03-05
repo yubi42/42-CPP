@@ -6,7 +6,7 @@
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:03:36 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/19 12:46:26 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/02/19 18:17:42 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ protected:
 public:
     ClapTrap(std::string clapTrap);
     ~ClapTrap();
-    virtual void attack(const std::string& target);
+    void attack(const std::string& target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
 };

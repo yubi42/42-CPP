@@ -6,7 +6,7 @@
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 10:49:23 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/19 13:05:25 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/02/19 18:17:56 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-class DiamondTrap : public virtual ScavTrap, public virtual FragTrap
+class DiamondTrap : public ScavTrap, public FragTrap
 {
 private:
     std::string name;
 public:
     DiamondTrap(std::string name);
     ~DiamondTrap();
-    void attack(const std::string& target);
+    using ScavTrap::attack;
     void whoAmI(void);
 };
 

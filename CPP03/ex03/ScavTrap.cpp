@@ -6,7 +6,7 @@
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 19:30:43 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/19 13:22:39 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/02/19 17:39:53 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
     /* this->hp = 100; */
     ep = 50;
     /* this->ad = 20; */
-    std::cout << "Creating - ScavTrap \"" << name /* << "\"" << ": " << hp << "HP, " << ep << "EP, " << ad << "AD." */ << std::endl;
+    std::cout << "Creating - ScavTrap \"" << name  << "\""/* << ": " << hp << "HP, " << ep << "EP, " << ad << "AD." */ << std::endl;
 }
 
 ScavTrap::~ScavTrap()

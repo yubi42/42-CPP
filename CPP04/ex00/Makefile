@@ -6,17 +6,19 @@
 #    By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 09:20:26 by yubi42            #+#    #+#              #
-#    Updated: 2024/03/05 11:56:35 by yubi42           ###   ########.fr        #
+#    Updated: 2024/02/29 17:13:58 by yubi42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXX = c++
+CC = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-NAME = megaPhone
+NAME = makeSound
 
-SRCS = megaphone.cpp \
-
+SRCS =	main.cpp \
+		Animals.cpp \
+		WrongAnimal.cpp \
+		
 OBJ_PATH = obj/
 OBJS = $(addprefix $(OBJ_PATH), $(SRCS:.cpp=.o))
 

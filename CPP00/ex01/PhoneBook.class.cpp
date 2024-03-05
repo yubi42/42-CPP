@@ -63,7 +63,7 @@ void PhoneBook::add(void)
     std::cout << RESET << std::endl;
 
     this->i = (this->i + 1) % 8;
-    if (this->i == 7)
+    if (this->i == 0)
         this->maxEntries = true;
 }
 
