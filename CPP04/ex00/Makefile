@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+         #
+#    By: jborner <jborner@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 09:20:26 by yubi42            #+#    #+#              #
-#    Updated: 2024/02/29 17:13:58 by yubi42           ###   ########.fr        #
+#    Updated: 2024/03/08 13:17:40 by jborner          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = c++
+CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 NAME = makeSound
