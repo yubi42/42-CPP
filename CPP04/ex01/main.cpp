@@ -5,21 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 20:54:06 by yubi42            #+#    #+#             */
-/*   Updated: 2024/03/05 12:03:42 by yubi42           ###   ########.fr       */
+/*   Created: 2024/02/29 01:02:02 by yubi42            #+#    #+#             */
+/*   Updated: 2024/03/05 21:28:41 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+
+/* int main()
+{
+    const Animal* pet[10];
+    for (int i = 0; i < 10; ++i)
+    {
+        if (i % 2)
+            pet[i] = new Dog();
+        else
+            pet[i] = new Cat();
+    }
+
+        for (int i = 0; i < 10; ++i)
+    {
+            delete(pet[i]);
+    }
+} */
 
 int main()
 {
-    ScavTrap one("one");
-    ClapTrap two("two");
-    two.attack("one");
-    one.takeDamage(0);
-    one.attack("two");
-    two.takeDamage(20);
-    one.guardGate();
-    one.beRepaired(0);
+    Cat basic;
+    Cat tmp = basic;
 }

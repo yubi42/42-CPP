@@ -6,11 +6,13 @@
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 01:02:02 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/29 17:17:09 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/03/05 20:32:21 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animals.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
 #include "WrongAnimal.hpp"
 
 int main()
