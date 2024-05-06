@@ -6,14 +6,14 @@
 #    By: jborner <jborner@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 09:20:26 by yubi42            #+#    #+#              #
-#    Updated: 2024/03/08 13:17:29 by jborner          ###   ########.fr        #
+#    Updated: 2024/05/06 16:14:40 by jborner          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-NAME = fight
+NAME = fight.out
 
 SRCS =	main.cpp \
 		ClapTrap.cpp \
