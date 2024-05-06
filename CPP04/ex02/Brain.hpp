@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 20:54:06 by yubi42            #+#    #+#             */
-/*   Updated: 2024/03/05 12:03:42 by yubi42           ###   ########.fr       */
+/*   Created: 2024/03/05 12:15:08 by yubi42            #+#    #+#             */
+/*   Updated: 2024/03/05 23:07:47 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
-int main()
+#include <string>
+#include <iostream>
+
+class Brain
 {
-    ScavTrap one("one");
-    ClapTrap two("two");
-    two.attack("one");
-    one.takeDamage(0);
-    one.attack("two");
-    two.takeDamage(20);
-    one.guardGate();
-    one.beRepaired(0);
-}
+private:
+    std::string ideas[100];
+
+public:
+    Brain();
+    Brain(const std::string type);
+    Brain(const Brain &src);
+    ~Brain();
+};
+
+
+#endif 

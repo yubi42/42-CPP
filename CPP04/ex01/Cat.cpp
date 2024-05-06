@@ -1,62 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animals.cpp                                        :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 00:39:14 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/29 17:03:22 by yubi42           ###   ########.fr       */
+/*   Created: 2024/03/05 20:14:07 by yubi42            #+#    #+#             */
+/*   Updated: 2024/03/05 23:07:39 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animals.hpp"
-
-
-Animal::Animal() : type("")
-{
-    std::cout << "Animal created." << std::endl;
-}
-
-Animal::~Animal()
-{
-    std::cout << "pew pew" << std::endl;
-}
-
-void Animal::makeSound() const
-{
-    std::cout << "no sound";
-}
-
-std::string Animal::getType()
-{
-    return(type);
-}
-
-Dog::Dog() : Animal()
-{
-    std::cout << "Dog created." << std::endl;
-    type = "Dog";
-}
-
-Dog::~Dog()
-{
-    std::cout << "Dog destroyed." << std::endl;
-}
-
-void Dog::makeSound() const
-{
-    std::cout << "bark";
-}
+#include "Cat.hpp"
 
 Cat::Cat() : Animal()
 {
     std::cout << "Cat created." << std::endl;
     type = "Cat";
+    myBrain = new Brain(type);
+}
+
+Cat::Cat(const Cat &src) : Animal(src) 
+{
+    std::cout << "Cat copy created." << std::endl;
+    myBrain = new Brain(*src.myBrain);
 }
 
 Cat::~Cat()
 {
+    delete myBrain;
     std::cout << "Cat destroyed." << std::endl;
 }
 

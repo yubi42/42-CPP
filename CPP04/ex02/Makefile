@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/11 11:03:24 by yubi42            #+#    #+#              #
-#    Updated: 2024/03/11 11:12:04 by yubi42           ###   ########.fr        #
+#    Created: 2024/01/25 09:20:26 by yubi42            #+#    #+#              #
+#    Updated: 2024/03/11 11:11:57 by yubi42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 
 NAME = makeSound.out
 
@@ -19,7 +19,7 @@ SRCS =	main.cpp \
 		Animal.cpp \
 		Dog.cpp \
 		Cat.cpp \
-		WrongAnimal.cpp \
+		Brain.cpp \
 		
 OBJ_PATH = obj/
 OBJS = $(addprefix $(OBJ_PATH), $(SRCS:.cpp=.o))

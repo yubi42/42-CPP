@@ -6,7 +6,7 @@
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 19:28:22 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/19 12:47:07 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/05/04 14:38:48 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 
 class ScavTrap : public virtual ClapTrap
 {
-private:
+protected:
+    int hp;
+    int ad;
+    int ep;
     
 public:
     ScavTrap(std::string name);

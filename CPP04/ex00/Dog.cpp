@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 20:54:06 by yubi42            #+#    #+#             */
-/*   Updated: 2024/03/05 12:03:42 by yubi42           ###   ########.fr       */
+/*   Created: 2024/03/05 20:13:34 by yubi42            #+#    #+#             */
+/*   Updated: 2024/03/05 20:19:48 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "Dog.hpp"
 
-int main()
+Dog::Dog() : Animal()
 {
-    ScavTrap one("one");
-    ClapTrap two("two");
-    two.attack("one");
-    one.takeDamage(0);
-    one.attack("two");
-    two.takeDamage(20);
-    one.guardGate();
-    one.beRepaired(0);
+    std::cout << "Dog created." << std::endl;
+    type = "Dog";
+}
+
+Dog::~Dog()
+{
+    std::cout << "Dog destroyed." << std::endl;
+}
+
+void Dog::makeSound() const
+{
+    std::cout << "bark";
 }

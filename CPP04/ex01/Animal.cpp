@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 10:49:23 by yubi42            #+#    #+#             */
-/*   Updated: 2024/05/04 14:31:38 by yubi42           ###   ########.fr       */
+/*   Created: 2024/02/29 00:39:14 by yubi42            #+#    #+#             */
+/*   Updated: 2024/03/11 11:10:28 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Animal.hpp"
 
-#ifndef DIAMONDTRAP_HPP
-#define DIAMONDTRAP_HPP
-
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
-
-class DiamondTrap : public ScavTrap, public FragTrap
+Animal::Animal() : type("")
 {
-private:
-    std::string name;
-    
-public:
-    DiamondTrap(std::string name);
-    ~DiamondTrap();
-    using FragTrap::hp;
-    using FragTrap::ad;
-    using ScavTrap::ep;
-    using ScavTrap::attack;
-    void whoAmI(void);
-};
+    std::cout << "Animal created." << std::endl;
+}
 
-#endif
+Animal::Animal(const Animal &src)
+{
+    std::cout << "Animal copy created." << std::endl;
+	type = src.type;
+}
+
+Animal::~Animal()
+{
+    std::cout << "Animal destroyed" << std::endl;
+}
+
+void Animal::makeSound() const
+{
+    std::cout << "no sound";
+}
+
+std::string Animal::getType() const
+{
+    return(type);
+}
