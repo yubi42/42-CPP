@@ -6,7 +6,7 @@
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 20:01:30 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/19 18:34:29 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/05/04 14:21:35 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
     hp = 100;
+    ep = 100;
     ad = 30;
-    std::cout << "Creating - FragTrap \"" << name << "\"" << std::endl;
+    std::cout << "Creating - FragTrap \"" << name << "\": " << hp << "HP, " << ep << "EP, " << ad << "AD." << std::endl;
+
 }
 
 FragTrap::~FragTrap()

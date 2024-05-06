@@ -6,7 +6,7 @@
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 20:00:05 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/19 18:21:37 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/05/04 14:38:14 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@
 
 class FragTrap : public virtual ClapTrap
 {
-private:
-    
+protected:
+    int hp;
+    int ep;
+    int ad;
+
 public:
     FragTrap(std::string name);
     ~FragTrap();
