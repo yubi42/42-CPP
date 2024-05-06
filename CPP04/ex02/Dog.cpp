@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 00:39:14 by yubi42            #+#    #+#             */
-/*   Updated: 2024/03/11 11:10:28 by yubi42           ###   ########.fr       */
+/*   Created: 2024/03/05 20:13:34 by yubi42            #+#    #+#             */
+/*   Updated: 2024/03/05 21:12:17 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Dog.hpp"
 
-Animal::Animal() : type("")
+Dog::Dog() : Animal()
 {
-    std::cout << "Animal created." << std::endl;
+    std::cout << "Dog created." << std::endl;
+    type = "Dog";
+    myBrain = new Brain(type);
 }
 
-Animal::Animal(const Animal &src)
+Dog::~Dog()
 {
-    std::cout << "Animal copy created." << std::endl;
-	type = src.type;
+    delete (myBrain);
+    std::cout << "Dog destroyed." << std::endl;
 }
 
-Animal::~Animal()
+Dog& Dog::operator=(const Dog& src)
 {
-    std::cout << "Animal destroyed" << std::endl;
+    myBrain = new Brain(src.type);
+	return (*this);
 }
 
-void Animal::makeSound() const
+void Dog::makeSound() const
 {
-    std::cout << "no sound";
-}
-
-std::string Animal::getType() const
-{
-    return(type);
+    std::cout << "bark";
 }

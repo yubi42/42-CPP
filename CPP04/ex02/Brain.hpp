@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 00:39:14 by yubi42            #+#    #+#             */
-/*   Updated: 2024/03/11 11:10:28 by yubi42           ###   ########.fr       */
+/*   Created: 2024/03/05 12:15:08 by yubi42            #+#    #+#             */
+/*   Updated: 2024/03/05 23:07:47 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
-Animal::Animal() : type("")
-{
-    std::cout << "Animal created." << std::endl;
-}
+#include <string>
+#include <iostream>
 
-Animal::Animal(const Animal &src)
+class Brain
 {
-    std::cout << "Animal copy created." << std::endl;
-	type = src.type;
-}
+private:
+    std::string ideas[100];
 
-Animal::~Animal()
-{
-    std::cout << "Animal destroyed" << std::endl;
-}
+public:
+    Brain();
+    Brain(const std::string type);
+    Brain(const Brain &src);
+    ~Brain();
+};
 
-void Animal::makeSound() const
-{
-    std::cout << "no sound";
-}
 
-std::string Animal::getType() const
-{
-    return(type);
-}
+#endif 

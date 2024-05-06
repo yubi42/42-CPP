@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 00:39:14 by yubi42            #+#    #+#             */
-/*   Updated: 2024/03/11 11:10:28 by yubi42           ###   ########.fr       */
+/*   Created: 2024/03/05 20:14:07 by yubi42            #+#    #+#             */
+/*   Updated: 2024/03/05 23:07:39 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Cat.hpp"
 
-Animal::Animal() : type("")
+Cat::Cat() : Animal()
 {
-    std::cout << "Animal created." << std::endl;
+    std::cout << "Cat created." << std::endl;
+    type = "Cat";
+    myBrain = new Brain(type);
 }
 
-Animal::Animal(const Animal &src)
+Cat::Cat(const Cat &src) : Animal(src) 
 {
-    std::cout << "Animal copy created." << std::endl;
-	type = src.type;
+    std::cout << "Cat copy created." << std::endl;
+    myBrain = new Brain(*src.myBrain);
 }
 
-Animal::~Animal()
+Cat::~Cat()
 {
-    std::cout << "Animal destroyed" << std::endl;
+    delete myBrain;
+    std::cout << "Cat destroyed." << std::endl;
 }
 
-void Animal::makeSound() const
+void Cat::makeSound() const
 {
-    std::cout << "no sound";
-}
-
-std::string Animal::getType() const
-{
-    return(type);
+    std::cout << "miao";
 }

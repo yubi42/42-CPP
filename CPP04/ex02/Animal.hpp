@@ -1,39 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 00:39:14 by yubi42            #+#    #+#             */
-/*   Updated: 2024/03/11 11:10:28 by yubi42           ###   ########.fr       */
+/*   Created: 2024/02/29 00:33:25 by yubi42            #+#    #+#             */
+/*   Updated: 2024/03/11 11:14:02 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
-Animal::Animal() : type("")
-{
-    std::cout << "Animal created." << std::endl;
-}
 
-Animal::Animal(const Animal &src)
-{
-    std::cout << "Animal copy created." << std::endl;
-	type = src.type;
-}
+#include <iostream>
+#include <string>
 
-Animal::~Animal()
+class Animal
 {
-    std::cout << "Animal destroyed" << std::endl;
-}
+protected:
+    std::string type;
+    Animal();
+    virtual ~Animal();
+    
+public:
+    Animal(const Animal &src);
+    Animal& operator=(const Animal& src);
+    std::string getType() const;
+    virtual void makeSound() const;
+};
 
-void Animal::makeSound() const
-{
-    std::cout << "no sound";
-}
-
-std::string Animal::getType() const
-{
-    return(type);
-}
+#endif

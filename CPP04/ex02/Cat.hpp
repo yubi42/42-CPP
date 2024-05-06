@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 01:02:02 by yubi42            #+#    #+#             */
-/*   Updated: 2024/03/11 11:17:30 by yubi42           ###   ########.fr       */
+/*   Created: 2024/03/05 20:14:37 by yubi42            #+#    #+#             */
+/*   Updated: 2024/03/05 23:07:31 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CAT_HPP
+#define CAT_HPP
+
 #include "Animal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
+#include "Brain.hpp"
 
-int main()
+class Cat : public Animal
 {
-    const Animal* pet[10];
-    for (int i = 0; i < 10; ++i)
-    {
-        if (i % 2)
-            pet[i] = new Dog();
-        else
-            pet[i] = new Cat();
-    }
+    private:
+        Brain *myBrain;
+public:
+    Cat();
+    ~Cat();
+    Cat(const Cat &src);
+    void makeSound() const;
+};
 
-        for (int i = 0; i < 10; ++i)
-    {
-            delete(pet[i]);
-    }
-
-    std::cout << std::endl;
-    Cat basic;
-    Cat tmp = basic;
-}
+#endif
