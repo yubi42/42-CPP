@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+         #
+#    By: jborner <jborner@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 09:20:26 by yubi42            #+#    #+#              #
-#    Updated: 2024/01/28 14:09:21 by yubi42           ###   ########.fr        #
+#    Updated: 2024/03/08 13:25:07 by jborner          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-NAME = main
+NAME = main.out
 
 SRCS = main.cpp \
 

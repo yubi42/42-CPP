@@ -3,8 +3,9 @@
 
 int main() {
     std::string str = "HI THIS IS BRAIN";
-    std::string* strPTR = &str;
-    std::string& strREF = str;
+    std::string *strPTR;
+    std::string &strREF = str; 
+    strPTR = &str;
 
     std::cout << "Memory address of the string variable: " << &str << std::endl;
     std::cout << "Memory address held by strPTR: " << strPTR << std::endl;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jborner <jborner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 14:46:22 by yubi42            #+#    #+#             */
-/*   Updated: 2024/01/28 15:35:15 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/03/08 13:41:55 by jborner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ Weapon::Weapon()
 {
 }
 
-Weapon::Weapon(std::string weaponType)
+Weapon::Weapon(const std::string weaponType)
 {
     this->setType(weaponType);
 }
 
-void Weapon::setType(std::string weaponType)
+void Weapon::setType(const std::string weaponType)
 {
     this->type = weaponType;
 }
