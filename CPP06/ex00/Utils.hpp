@@ -5,6 +5,7 @@
 #include <sstream>
 #include <stdlib.h>
 #include <vector>
+#include <cmath>
 #include <limits>
 
 // printValue.cpp

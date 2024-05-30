@@ -24,7 +24,7 @@ bool isInt(const std::string &input, int &output)
 {
     std::istringstream iss(input);
     iss >> output;
-    return !(iss.fail() || !iss.eof());
+    return (!iss.fail() && iss.eof());
 }
 
 bool isFloat(std::string input, float &output)
@@ -35,12 +35,12 @@ bool isFloat(std::string input, float &output)
     input.erase(input.size() - 1);
     std::istringstream iss(input);
     iss >> output;
-    return !(iss.fail() || !iss.eof());
+    return (!iss.fail() && iss.eof());
 }
 
 bool isDouble(const std::string &input, double &output)
 {
     std::istringstream iss(input);
     iss >> output;
-    return !(iss.fail() || !iss.eof());
+    return (!iss.fail() && iss.eof());
 }
