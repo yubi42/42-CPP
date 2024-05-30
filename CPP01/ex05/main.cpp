@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jborner <jborner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 13:54:54 by yubi42            #+#    #+#             */
-/*   Updated: 2024/01/31 18:32:46 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/03/08 14:21:51 by jborner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main()
     harl.print();
     harl.complain("pups");
     harl.print();
-    harl.complain("ERROR");
+    harl.complain("WARNING");
     harl.print();
     harl.complain("DEBUG");
     harl.print();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jborner <jborner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 13:50:32 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/11 20:16:16 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/04/29 14:31:32 by jborner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,25 @@
 
 int main( void ) 
 {
-Fixed a;
+Fixed a(1);
 Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-std::cout << a << std::endl;
-std::cout << ++a << std::endl;
-std::cout << a << std::endl;
-std::cout << a++ << std::endl;
+Fixed c(1);
+Fixed const d( Fixed( 10.1016f ) / Fixed( 2 ) );
 std::cout << a << std::endl;
 std::cout << b << std::endl;
+std::cout << d << std::endl;
+std::cout << c << std::endl << std::endl;
+
+std::cout << c++ << std::endl;
+std::cout << c << std::endl;
+std::cout << --c << std::endl << std::endl;
+
+std::cout << (a > c) << std::endl;
+std::cout << (a < c) << std::endl;
+std::cout << (a >= c) << std::endl;
+std::cout << (a <= c) << std::endl << std::endl;
+
 std::cout << Fixed::max( a, b ) << std::endl;
+std::cout << Fixed::min( a, b ) << std::endl;
 return 0;
 }

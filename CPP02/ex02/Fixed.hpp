@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jborner <jborner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 13:52:26 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/12 21:04:55 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/04/29 14:05:16 by jborner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,8 @@ public:
     static Fixed& min(Fixed& fp1, Fixed& fp2);
     static const Fixed& max(const Fixed& fp1, const Fixed& fp2);
     static const Fixed& min(const Fixed& fp1, const Fixed& fp2);
-    
-    
-    friend std::ostream& operator<<(std::ostream& os, const Fixed& num);
-
 };
 
+ std::ostream& operator<<(std::ostream& os, const Fixed& num);
+ 
 #endif

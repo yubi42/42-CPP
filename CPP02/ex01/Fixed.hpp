@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jborner <jborner@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 13:52:26 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/12 21:05:10 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/04/29 14:04:42 by jborner          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ public:
     int toInt( void ) const;
     float toFloat( void ) const;
     Fixed& operator=(const Fixed& src);
-    friend std::ostream& operator<<(std::ostream& os, const Fixed& num);
-
 };
+
+std::ostream& operator<<(std::ostream& os, const Fixed& num);
 
 #endif

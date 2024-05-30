@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+         #
+#    By: jborner <jborner@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 09:20:26 by yubi42            #+#    #+#              #
-#    Updated: 2024/01/28 16:28:25 by yubi42           ###   ########.fr        #
+#    Updated: 2024/03/08 13:25:49 by jborner          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-NAME = war
+NAME = war.out
 
 SRCS =	main.cpp \
 		HumanA.cpp \
