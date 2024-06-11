@@ -19,9 +19,3 @@ int main ()
     }
     std::cout << std::endl;
 }
-
-// int main ()
-// {
-//     Bureaucrat intern;
-//     intern.downGrade();
-// }
