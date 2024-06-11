@@ -10,6 +10,8 @@ Form::Form() : _name("Default"), _signed(false), _signMin(1), _execMin(1)
 
 Form::Form(std::string name, int signMin, int execMin) : _name(name), _signed(false), _signMin(signMin), _execMin(execMin)
 {
+    testGrade(_signMin);
+    testGrade(_execMin);
     std::cout << "Form: \"" << _name << "\" got created." << std::endl;
 }
 
@@ -28,6 +30,16 @@ Form& Form::operator=(const Form& src)
 Form::~Form()
 {
     std::cout << "Form: \"" << _name << "\" got shredded." << std::endl;
+}
+
+// private
+
+void Form::testGrade(int grade) const
+{
+    if (grade < 1)
+        throw Form::GradeTooHighException();
+    else if (grade > 150)
+        throw Form::GradeTooLowException();
 }
 
 // public 

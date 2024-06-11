@@ -59,15 +59,14 @@ void Bureaucrat::upGrade()
     {
         std::cout << std::endl << "Trying to promote " << *this << "." << std::endl;
         testGrade(_grade - 1);
+        --_grade;
+        std::cout << "Bureaucrat " << _name << " got promoted from: " << _grade + 1 << " to " << _grade << "." << std::endl;
     }
     catch(const std::exception& e)
     {
         std::cerr << "Can not promote because: " << e.what() << std::endl;
         return ;
     }
-    --_grade;
-    std::cout << "Bureaucrat " << _name << " got promoted from: " << _grade + 1 << " to " << _grade << "." << std::endl;
-    
 }
 
 void Bureaucrat::downGrade()
@@ -76,14 +75,14 @@ void Bureaucrat::downGrade()
     {
         std::cout << std::endl << "Trying to demote " << *this << "." << std::endl;
         testGrade(_grade + 1);
+        ++_grade;
+        std::cout << "Bureaucrat " << _name << " got demoted from: " << _grade - 1 << " to " << _grade << "." << std::endl;
     }
     catch(const std::exception& e)
     {
         std::cerr << "Can not demote because: " << e.what() << std::endl;
         return ;
     }
-    ++_grade;
-    std::cout << "Bureaucrat " << _name << " got demoted from: " << _grade - 1 << " to " << _grade << "." << std::endl;
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()

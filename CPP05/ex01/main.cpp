@@ -9,4 +9,13 @@ int main ()
     intern.signForm(form);
     boss.signForm(form);
     std::cout << std::endl << form << std::endl << std::endl;
+    try
+    {
+       Form form1("test", 151, 1);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "Failed to create form: " << e.what() << std::endl;
+    } 
+    std::cout << std::endl;
 }

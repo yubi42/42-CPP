@@ -14,6 +14,8 @@ private:
     const int _signMin;
     const int _execMin;
 
+    void testGrade(int grade) const;
+
 protected:
     AForm();
     AForm(std::string name, int signGrade, int execGrade);

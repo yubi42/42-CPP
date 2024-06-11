@@ -14,6 +14,8 @@ private:
     const int _signMin;
     const int _execMin;
 
+    void testGrade(int grade) const;
+
 public:
     Form();
     Form(std::string name, int signGrade, int execGrade);

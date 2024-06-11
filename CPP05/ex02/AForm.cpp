@@ -10,6 +10,8 @@ AForm::AForm() : _name("Default"), _signed(false), _signMin(1), _execMin(1)
 
 AForm::AForm(std::string name, int signMin, int execMin) : _name(name), _signed(false), _signMin(signMin), _execMin(execMin)
 {
+    testGrade(_signMin);
+    testGrade(_execMin);
     std::cout << "AForm: \"" << _name << "\" got created." << std::endl;
 }
 
@@ -28,6 +30,16 @@ AForm& AForm::operator=(const AForm& src)
 AForm::~AForm()
 {
     std::cout << "AForm: \"" << _name << "\" got shredded." << std::endl;
+}
+
+// private
+
+void AForm::testGrade(int grade) const
+{
+    if (grade < 1)
+        throw AForm::GradeTooHighException();
+    else if (grade > 150)
+        throw AForm::GradeTooLowException();
 }
 
 // public 
