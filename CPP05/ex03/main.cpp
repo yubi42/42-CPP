@@ -6,14 +6,14 @@ int main ()
 {
 Intern someRandomIntern;
 Intern secondIntern(someRandomIntern);
-AForm *rrf;
+AForm *form;
 
-rrf = secondIntern.makeForm("robotomy request", "Bender");
-std::cout << *rrf << std::endl;
-delete rrf;
+form = secondIntern.makeForm("robotomy request", "Bender");
+std::cout << *form << std::endl;
+delete form;
 
-rrf = secondIntern.makeForm("shrubbery creation", "shubby");
-std::cout << *rrf << std::endl;
+form = secondIntern.makeForm("shrubbery creation", "shubby");
+std::cout << *form << std::endl;
 
-delete rrf;
+delete form;
 }
