@@ -1,14 +1,13 @@
 #pragma once
+
 #include <iostream>
+#include <algorithm> 
+#include <vector> 
+#include <iterator>
 
 template <typename T>
-void easyfind(T *arr, int num)
+typename T::iterator easyfind(T &container, int num)
 {
-    size_t arr_len = sizeof(arr) / sizeof(arr[0]);
-    for (size_t i = 0; i < arr_len; ++i)
-    {
-        if (arr[i] == num)
-            return (i);
-    }
-    return (i);
+    typename T::iterator it = std::find(container.begin(), container.end(), num);
+    return (it);
 }
