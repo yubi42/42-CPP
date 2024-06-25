@@ -6,7 +6,7 @@
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 20:13:34 by yubi42            #+#    #+#             */
-/*   Updated: 2024/03/05 21:12:17 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/06/24 18:51:32 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,33 @@
 Dog::Dog() : Animal()
 {
     std::cout << "Dog created." << std::endl;
-    type = "Dog";
-    myBrain = new Brain(type);
+    _type = "Dog";
+    myBrain = new Brain(_type);
+}
+
+Dog::Dog(const Dog &src) : Animal(src) 
+{
+    std::cout << "Dog copy created." << std::endl;
+    myBrain = new Brain(*src.myBrain);
+}
+
+Dog& Dog::operator=(const Dog& src)
+{
+    if(this != &src)
+    {
+        _type = src._type;
+        if (this->myBrain)
+            delete myBrain;
+        myBrain = new Brain(src._type);
+    }
+    
+	return (*this);
 }
 
 Dog::~Dog()
 {
     delete (myBrain);
     std::cout << "Dog destroyed." << std::endl;
-}
-
-Dog& Dog::operator=(const Dog& src)
-{
-    myBrain = new Brain(src.type);
-	return (*this);
 }
 
 void Dog::makeSound() const

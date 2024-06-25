@@ -6,7 +6,7 @@
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 20:15:17 by yubi42            #+#    #+#             */
-/*   Updated: 2024/03/05 20:59:49 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/06/24 18:53:54 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ class Dog : public Animal
 {
     private:
         Brain *myBrain;
-public:
-    Dog();
-    ~Dog();
-    Dog& operator=(const Dog& src);
-    void makeSound() const;
+    public:
+        Dog();
+        Dog(const Dog& other);
+        Dog& operator=(const Dog& other);
+        ~Dog();
+        
+        void makeSound() const;
 };
 
 #endif

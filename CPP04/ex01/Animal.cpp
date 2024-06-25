@@ -6,13 +6,13 @@
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 00:39:14 by yubi42            #+#    #+#             */
-/*   Updated: 2024/03/11 11:10:28 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/06/24 18:29:38 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal() : type("")
+Animal::Animal() : _type("")
 {
     std::cout << "Animal created." << std::endl;
 }
@@ -20,7 +20,14 @@ Animal::Animal() : type("")
 Animal::Animal(const Animal &src)
 {
     std::cout << "Animal copy created." << std::endl;
-	type = src.type;
+	_type = src._type;
+}
+
+Animal& Animal::operator=(const Animal& other)
+{
+	_type = other._type;
+	std::cout << "Animal " << _type << " copy assigned." << std::endl;
+	return *this;
 }
 
 Animal::~Animal()
@@ -35,5 +42,5 @@ void Animal::makeSound() const
 
 std::string Animal::getType() const
 {
-    return(type);
+    return(_type);
 }

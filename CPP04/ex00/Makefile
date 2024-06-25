@@ -6,7 +6,7 @@
 #    By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/11 11:03:24 by yubi42            #+#    #+#              #
-#    Updated: 2024/03/11 11:12:04 by yubi42           ###   ########.fr        #
+#    Updated: 2024/06/24 17:38:13 by yubi42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS =	main.cpp \
 		Cat.cpp \
 		WrongAnimal.cpp \
 		
-OBJ_PATH = obj/
+OBJ_PATH = .obj/
 OBJS = $(addprefix $(OBJ_PATH), $(SRCS:.cpp=.o))
 
 all: $(NAME)

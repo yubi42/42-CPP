@@ -6,17 +6,17 @@
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:08:36 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/29 17:10:01 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/06/24 18:56:39 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
 
-#include "Animals.hpp"
+#include "Animal.hpp"
 
 
-WrongAnimal::WrongAnimal() : type("")
+WrongAnimal::WrongAnimal() : _type("")
 {
     std::cout << "Animal created." << std::endl;
 }
@@ -33,13 +33,13 @@ void WrongAnimal::makeSound() const
 
 std::string WrongAnimal::getType()
 {
-    return(type);
+    return(_type);
 }
 
 WrongCat::WrongCat() : WrongAnimal()
 {
     std::cout << "WrongCat created." << std::endl;
-    type = "WrongCat";
+    _type = "WrongCat";
 }
 
 WrongCat::~WrongCat()

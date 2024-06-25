@@ -6,7 +6,7 @@
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 20:13:34 by yubi42            #+#    #+#             */
-/*   Updated: 2024/03/05 20:19:48 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/06/24 18:24:35 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,20 @@
 Dog::Dog() : Animal()
 {
     std::cout << "Dog created." << std::endl;
-    type = "Dog";
+    _type = "Dog";
+}
+
+Dog::Dog( const Dog& other)
+{
+    _type = other._type;
+	std::cout << "Dog copy constructed" << std::endl;
+}
+
+Dog&	Dog::operator=( const Dog& other )
+{
+	_type = other._type;
+	std::cout << "Dog copy assigned" << std::endl;
+	return *this;
 }
 
 Dog::~Dog()

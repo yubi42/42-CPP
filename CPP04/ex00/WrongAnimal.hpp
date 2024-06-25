@@ -6,7 +6,7 @@
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 17:05:54 by yubi42            #+#    #+#             */
-/*   Updated: 2024/02/29 17:13:20 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/06/24 18:57:03 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,24 @@
 
 class WrongAnimal
 {
-protected:
-    std::string type;
-    
-public:
-    WrongAnimal();
-    ~WrongAnimal();
-    std::string getType();
-    void makeSound() const;
+    protected:
+        std::string _type;
+        
+    public:
+        WrongAnimal();
+        ~WrongAnimal();
+        
+        std::string getType();
+        void makeSound() const;
 };
 
 
 class WrongCat : public WrongAnimal
 {
-public:
-    WrongCat();
-    ~WrongCat();
-    void makeSound() const;
+    public:
+        WrongCat();
+        ~WrongCat();
+        void makeSound() const;
 };
 
 #endif

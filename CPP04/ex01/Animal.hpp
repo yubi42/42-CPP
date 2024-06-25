@@ -6,7 +6,7 @@
 /*   By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 00:33:25 by yubi42            #+#    #+#             */
-/*   Updated: 2024/03/05 22:30:05 by yubi42           ###   ########.fr       */
+/*   Updated: 2024/06/24 18:55:31 by yubi42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,17 @@
 
 class Animal
 {
-protected:
-    std::string type;
+    protected:
+        std::string _type;
+        
+    public:
+        Animal();
+        Animal(const Animal &src);
+        Animal& operator=(const Animal& src);
+        virtual ~Animal();
     
-public:
-    Animal();
-    Animal(const Animal &src);
-    virtual ~Animal();
-    Animal& operator=(const Animal& src);
-    std::string getType() const;
-    virtual void makeSound() const;
+        std::string getType() const;
+        virtual void makeSound() const;
 };
 
 #endif
