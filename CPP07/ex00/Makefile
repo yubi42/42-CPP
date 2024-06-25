@@ -6,7 +6,7 @@
 #    By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 09:20:26 by yubi42            #+#    #+#              #
-#    Updated: 2024/05/31 21:45:16 by yubi42           ###   ########.fr        #
+#    Updated: 2024/06/24 14:18:41 by yubi42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME = a.out
 
 SRCS =	main.cpp \
 	
-OBJ_PATH = obj/
+OBJ_PATH = .obj/
 OBJS = $(addprefix $(OBJ_PATH), $(SRCS:.cpp=.o))
 
 all: $(NAME)

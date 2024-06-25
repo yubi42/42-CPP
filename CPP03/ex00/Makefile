@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jborner <jborner@student.42.fr>            +#+  +:+       +#+         #
+#    By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 09:20:26 by yubi42            #+#    #+#              #
-#    Updated: 2024/05/06 16:15:01 by jborner          ###   ########.fr        #
+#    Updated: 2024/06/24 17:37:15 by yubi42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME = fight.out
 SRCS =	main.cpp \
 		ClapTrap.cpp \
 		
-OBJ_PATH = obj/
+OBJ_PATH = .obj/
 OBJS = $(addprefix $(OBJ_PATH), $(SRCS:.cpp=.o))
 
 all: $(NAME)

@@ -6,7 +6,7 @@
 #    By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 09:20:26 by yubi42            #+#    #+#              #
-#    Updated: 2024/05/27 13:26:04 by yubi42           ###   ########.fr        #
+#    Updated: 2024/06/24 17:40:16 by yubi42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS =	main.cpp \
 		RobotomyRequestForm.cpp \
 		PresidentialPardonForm.cpp
 		
-OBJ_PATH = obj/
+OBJ_PATH = .obj/
 OBJS = $(addprefix $(OBJ_PATH), $(SRCS:.cpp=.o))
 
 all: $(NAME)
