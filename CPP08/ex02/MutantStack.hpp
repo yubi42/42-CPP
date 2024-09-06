@@ -14,16 +14,19 @@ public:
 	MutantStack(MutantStack const &src) : std::stack<T>::stack(src){}
 	MutantStack &operator=(MutantStack const &src)
 	{
-		if (this != &src) this->c = src.c;
-		return *this;
+        if (this != &src) std::stack<T>::operator=(src);
+        return (*this);
 	}
 	virtual ~MutantStack(void){}
 
+//container_type references to the underlying container type, in this case: std::deque<T> and since deque has an iterator we can use it.
     typedef typename std::stack<T>::container_type::iterator iterator;
     typedef typename std::stack<T>::container_type::const_iterator const_iterator;
     typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
     typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
 
+// by default c is the underlying container _Sequence. so we basically say begin() --> return std::deque<T>.begin()
+// typedef allows us to create alias's. so now i can use "iterator" instead of always writing: "typename std::stack<T>::container_type::iterator"
     iterator begin() {return this->c.begin();}
     iterator end() {return this->c.end();}
     const_iterator begin() const {return this->c.begin();}

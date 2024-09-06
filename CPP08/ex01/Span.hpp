@@ -13,20 +13,21 @@
 class Span
 {
 private:
-    const unsigned int _N;
+    unsigned int _N;
     std::vector<int> _vec;
+    
+    Span();
     std::string redError(std::string msg);
 
 public:
-    Span();
     Span(const unsigned int N);
     Span(const Span& other);
     Span& operator=(const Span& other);    
     virtual ~Span();
 
     void addNumber(int num);
+    void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
     int shortestSpan();
     int longestSpan();
-    void rangeOfIterators(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
 };

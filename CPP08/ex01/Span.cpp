@@ -6,11 +6,14 @@ Span::Span() : _N(0) {}
 
 Span::Span(const unsigned int N) : _N(N) {}
 
-Span::Span(const Span &other) : _N(other._N) {}
+Span::Span(const Span &src) : _N(src._N), _vec(src._vec) {}
 
-Span& Span::operator=(const Span& other) 
+Span& Span::operator=(const Span& src) 
 {
-    (void)other;
+    if(this == &src)
+        return (*this);
+    _N = src._N;
+    _vec = src._vec;
     return (*this);
 }
 
@@ -36,37 +39,36 @@ void Span::addNumber(int num)
 
 int Span::shortestSpan()
 {
-    unsigned int size = _vec.size();
+    size_t size = _vec.size();
     if (size < 2)
         throw std::length_error(redError("\nError: Span must at least contain 2 elements"));
-    int s_span = _vec[0] + _vec[1];
-    for(unsigned int i = 1; i < size - 1; ++i)
+    
+    std::vector<int> vec_sorted(_vec);
+    std::sort(vec_sorted.begin(), vec_sorted.end());
+
+    int s_span = vec_sorted[1] - vec_sorted[0];
+    for(size_t i = 1; i < size - 1; ++i)
     {
-        int tmp = abs(_vec[i] - _vec[i + 1]);
-        if (tmp < s_span)
-            s_span = tmp;
+        int tmp = vec_sorted[i + 1] - vec_sorted[i];
+        s_span = std::min(s_span, tmp);
     }
     return (s_span);
 }
 
 int Span::longestSpan()
 {
-    unsigned int size = _vec.size();
+    size_t size = _vec.size();
     if (size < 2)
         throw std::length_error(redError("\nError: Span must at least contain 2 elements"));
-    int l_span = _vec[0] + _vec[1];
-    for(size_t i = 1; i < size - 1; ++i)
-    {
-        int tmp = abs(_vec[i] - _vec[i + 1]);
-        if (tmp > l_span)
-            l_span = tmp;
-    }
-    return (l_span);
+
+    std::vector<int> vec_sorted(_vec);
+    std::sort(vec_sorted.begin(), vec_sorted.end());
+    return(vec_sorted.back() - vec_sorted.front());
 }
 
-void Span::rangeOfIterators(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
-    int dis = std::distance(begin, end);
+    size_t dis = std::distance(begin, end);
     if(_vec.size() + dis > _N)
         throw std::length_error(redError("Error: Too many elements"));
     _vec.insert(_vec.end(), begin, end);
