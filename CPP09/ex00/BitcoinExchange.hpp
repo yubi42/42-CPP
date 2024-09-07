@@ -14,7 +14,7 @@ private:
     BitcoinExchange();
     BitcoinExchange(BitcoinExchange &src);
     BitcoinExchange& operator=(const BitcoinExchange& other);
-    ~BitcoinExchange();
+    virtual ~BitcoinExchange();
 
     static void csv_to_map(std::ifstream &data_file, std::map<std::string, float> &csv, std::string &line);
     static bool check_format(std::ifstream &input_file, std::string &line);
