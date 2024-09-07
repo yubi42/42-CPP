@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <string>
-#include <queue>
+#include <stack>
 #include <stdexcept>
 #include <sstream>
 
@@ -10,8 +10,10 @@ class RPN
 {
     private:
         std::stringstream _inputstream;
-        std::queue<int> _queue;
+        std::stack<int> _stack;
         int _value;
+
+        RPN();
     
     public:
         RPN(std::string input);
