@@ -1,8 +1,8 @@
 #include <BitcoinExchange.hpp>
 
     BitcoinExchange::BitcoinExchange() {}
-    BitcoinExchange::BitcoinExchange(BitcoinExchange &src) {}
-    BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) {}
+    BitcoinExchange::BitcoinExchange(BitcoinExchange &src) { (void)src; }
+    BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) { (void)other; return *this; }
     BitcoinExchange::~BitcoinExchange() {}
 
 void BitcoinExchange::set_tm(std::tm &tm, int &year, int &month, int &day)

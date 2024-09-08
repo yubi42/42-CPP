@@ -8,8 +8,6 @@ int error(std::string msg)
 
 int main (int ac, char **av)
 {
-    if (ac != 2)
-        return (1);
     std::ifstream data_file("data.csv");
     if (ac != 2 || !data_file.is_open()) 
         return(error("Error: Could not open file."));
