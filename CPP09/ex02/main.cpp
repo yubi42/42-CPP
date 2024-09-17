@@ -1,5 +1,6 @@
 #include <PmergeMe.hpp>
 
+
 int main(int ac, char **av)
 {
     if (ac < 2)
@@ -10,7 +11,8 @@ int main(int ac, char **av)
 
     PmergeMe pmerge;
     std::pair<clock_t, clock_t> stop_time;
-
+    
+    try
     {
         std::vector<int> vec;
         pmerge.parseInput(ac, av, vec);
@@ -24,6 +26,11 @@ int main(int ac, char **av)
         std::cout << "johnson 3: 2 new vectors to store big and small values | using size_t i << works for random access containers like vector and deque but not for list, map, set..." << std::endl;
         std::cout << "johnson 1: ";
         pmerge.displayResults(stop_time, vec);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+        return (1);
     }
     {
         std::vector<int> vec;
