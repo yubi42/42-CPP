@@ -37,13 +37,6 @@ struct TypeName<std::list<int> >
     static std::string name() { return ("std::list<int>"); }
 };
 
-
-template<typename T>
-void sortContainer(T &arr) { std::sort(arr.begin(), arr.end()); }
-
-template<typename T>
-void sortContainer(std::list<T> &arr) { arr.sort(); }
-
 class PmergeMe
 {
 private:
