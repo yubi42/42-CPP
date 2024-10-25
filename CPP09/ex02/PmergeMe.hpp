@@ -47,11 +47,10 @@ void sortContainer(std::list<T> &arr) { arr.sort(); }
 class PmergeMe
 {
 private:
-
-public:
-    PmergeMe();
     PmergeMe(const PmergeMe &src);
     PmergeMe& operator=(const PmergeMe &src);
+public:
+    PmergeMe();
     virtual ~PmergeMe();
 
     template<typename T>
@@ -88,110 +87,107 @@ public:
             std::cout << *it << ' ';
         }
         std::cout << std::endl;
-    };
+    }
+
+    void johnsonMerge(std::list<int> &small_values, std::list<int> &big_values);
 
     template<typename T>
-    void johnsonSort(T &arr)
+    void johnsonMerge(T &small_values, T &big_values)
     {
-        T big_values_arr;
-        typename T::iterator it = arr.begin();
-
-        while (it != arr.end()) 
+        size_t small_size = small_values.size();
+        size_t len = small_size / 2;
+        for(size_t i = 0; i < len; ++i)
         {
-            typename T::iterator next_it = it;
-            ++next_it;
-            if (next_it != arr.end()) 
+            if (small_values[i] > small_values[i + 1]) 
             {
-                if (*it > *next_it) 
-                {
-                    big_values_arr.push_back(*it);
-                    it = arr.erase(it);
-                } 
-                else 
-                {
-                    big_values_arr.push_back(*next_it);
-                    it = arr.erase(next_it);
-                }
+                big_values.push_back(small_values[i]);
+                small_values.erase(small_values.begin() + i);
+            } 
+            else 
+            {
+                big_values.push_back(small_values[i + 1]);
+                small_values.erase(small_values.begin() + i + 1);
             }
-            if(it != arr.end())
-                ++it;
         }
-        sortContainer(arr);
-        for (typename T::iterator big_it = big_values_arr.begin(); big_it != big_values_arr.end(); ++big_it)
+        if (small_size % 2)
         {
-            typename T::iterator insert_pos = std::upper_bound(arr.begin(), arr.end(), *big_it);
-            arr.insert(insert_pos, *big_it);
+            big_values.push_back(small_values[len]);
+            small_values.erase(small_values.end() - 1);
         }
-    };
+        // displayArr("small array:", small_values);
+        // displayArr("big array:", big_values);
+    }
+
+    void johnsonInsert(std::list<int> &small_values, std::list<int> &big_values, std::list<int> &sorted_array);
 
     template<typename T>
-    T johnsonSort2(const T &arr)
+    void johnsonInsert(T &small_values, T &big_values, T &sorted_array)
     {
-        T big_values_arr;
-        T small_values_arr;
-        typename T::const_iterator end = arr.end();
-        for(typename T::const_iterator it = arr.begin(); it != end; ++it) 
+        if(small_values.size() < big_values.size())
+            big_values.pop_back();
+    
+        size_t end_len = sorted_array.size() + small_values.size();
+        size_t big_len = big_values.size();
+        size_t j;
+        for(size_t i = 0; i < end_len; ++i)
         {
-            typename T::const_iterator next_it = it;
-            ++next_it;
-            if (next_it != end) 
+            j = 0;
+            while(j < big_len && sorted_array[i] != big_values[j])
+                ++j;
+            if(j != big_len)
             {
-                if (*it > *next_it) 
+                size_t low = 0;
+                size_t high = i;
+                size_t mid;
+                while (low != high)
                 {
-                    big_values_arr.push_back(*it);
-                    small_values_arr.push_back(*next_it);
-                } 
-                else 
-                {
-                    big_values_arr.push_back(*next_it);
-                    small_values_arr.push_back(*it);
+                    mid = low + ((high - low) / 2);
+                    if (small_values[j] < sorted_array[mid])
+                        high = mid;
+                    else 
+                        low = ++mid;
                 }
-                ++it;
-            }
-            else
-                small_values_arr.push_back(*it);
-        }
-        sortContainer(small_values_arr);
-        for (typename T::iterator big_it = big_values_arr.begin(); big_it != big_values_arr.end(); ++big_it)
-        {
-            typename T::iterator insert_pos = std::upper_bound(small_values_arr.begin(), small_values_arr.end(), *big_it);
-            small_values_arr.insert(insert_pos, *big_it);
-        }
-        return(small_values_arr);
-    };
-
-    template<typename T>
-    T johnsonSort3(const T &arr)
-    {
-        T big_values_arr;
-        T small_values_arr;
-        size_t len = arr.size();
-        for(size_t i = 0; i < len; ++i) 
-        {
-            if (i + 1 < len) 
-            {
-                if (arr[i] > arr[i + 1]) 
-                {
-                    big_values_arr.push_back(arr[i]);
-                    small_values_arr.push_back(arr[i + 1]);
-                } 
-                else 
-                {
-                    big_values_arr.push_back(arr[i + 1]);
-                    small_values_arr.push_back(arr[i]);
-                }
+                sorted_array.insert(sorted_array.begin() + low, small_values[j]);
                 ++i;
             }
-            else
-                small_values_arr.push_back(arr[i]);
         }
-        sortContainer(small_values_arr);
-        for (typename T::iterator big_it = big_values_arr.begin(); big_it != big_values_arr.end(); ++big_it)
+    }
+    
+    template<typename T>
+    void johnsonAlgorithm(T small_values, T &sorted_array)
+    {
+        T big_values;
+        johnsonMerge(small_values, big_values);
+        size_t big_values_size = big_values.size();
+        if(big_values_size > 2)
+            johnsonAlgorithm(big_values, sorted_array);
+        else if(big_values_size == 2) 
         {
-            typename T::iterator insert_pos = std::upper_bound(small_values_arr.begin(), small_values_arr.end(), *big_it);
-            small_values_arr.insert(insert_pos, *big_it);
-        }
-        return(small_values_arr);
-    };
-};
+            typename T::iterator big_it = big_values.begin();
+            typename T::iterator big_next = big_values.begin();
+            ++big_next;
 
+            if(*big_it < *big_next)
+            {
+                sorted_array.push_back(*big_it);
+                sorted_array.push_back(*big_next);
+            }
+            else
+            {
+                sorted_array.push_back(*big_next);
+                sorted_array.push_back(*big_it);
+            }
+        }
+        johnsonInsert(small_values, big_values, sorted_array);
+    }
+
+    template<typename T>
+    void johnsonSort(T &start_arr)
+    { 
+        T sorted_array;
+    
+        johnsonAlgorithm(start_arr, sorted_array);
+        start_arr = sorted_array;
+    }
+
+};
