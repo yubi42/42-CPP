@@ -105,17 +105,22 @@ bool BitcoinExchange::check_format(std::ifstream &input_file, std::string &line)
     std::istringstream line_stream(line);
     std::string token;
     std::getline(line_stream, token, '|');
-    if (!token.compare("date "))
+    if (token != "date ")
+        return false;
+    std::getline(line_stream, token, '|');
+    if (token != " value")
+        return false;
+    std::streampos list_start = input_file.tellg();
+    while(std::getline(input_file, line))
     {
-        std::getline(line_stream, token, '|');
-        if (!token.compare(" value"))
-            return(true);
-        else
-            return(false);
+        if (line.find(" | ") == std::string::npos && line.find(" ") != std::string::npos)
+            return (false);  
     }
-    else 
-        return(false);
+    input_file.clear();
+    input_file.seekg(list_start);
+    return (true);
 }
+
 
 int BitcoinExchange::exchange(std::ifstream &data_file, std::ifstream &input_file)
 {

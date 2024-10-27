@@ -49,4 +49,35 @@ int main(int ac, char **av)
         // pmerge.displayArr("After:", lst);
         pmerge.displayResults(stop_time, lst);
     }
+    std::cout << "for testing with 1 arr of pairs instead of 2 arr:" << std::endl;
+    {
+        std::vector<std::pair<int, int> > lst;
+        pmerge.parseInputPairs(ac, av, lst);  
+        // pmerge.displayArrPairs("Before:", lst);
+        stop_time.first = clock();
+        pmerge.johnsonSortPairs(lst);
+        stop_time.second = clock();
+        // pmerge.displayArrPairs("After:", lst);
+        pmerge.displayResults(stop_time, lst);
+    }
+    {
+        std::deque<std::pair<int, int> > lst;
+        pmerge.parseInputPairs(ac, av, lst);  
+        // pmerge.displayArrPairs("Before:", lst);
+        stop_time.first = clock();
+        pmerge.johnsonSortPairs(lst);
+        stop_time.second = clock();
+        // pmerge.displayArrPairs("After:", lst);
+        pmerge.displayResults(stop_time, lst);
+    }
+    {
+        std::list<std::pair<int, int> > lst;
+        pmerge.parseInputPairs(ac, av, lst);  
+        // pmerge.displayArrPairs("Before:", lst);
+        stop_time.first = clock();
+        pmerge.johnsonSortPairs(lst);
+        stop_time.second = clock();
+        // pmerge.displayArrPairs("After:", lst);
+        pmerge.displayResults(stop_time, lst);
+    }
 }

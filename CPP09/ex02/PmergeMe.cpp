@@ -86,3 +86,34 @@ void PmergeMe::johnsonInsert(std::list<int> &small_values, std::list<int> &big_v
         max_range += 2;
     }
 }
+
+void PmergeMe::johnsonInsertPairs(const std::list<std::pair<int, int> > &split_array, std::list<std::pair<int, int> > &sorted_array)
+{
+    size_t insert_max = 0;
+    for(typename std::list<std::pair<int, int> >::iterator sorted_it = sorted_array.begin(); sorted_it != sorted_array.end(); ++sorted_it)
+    {
+        typename std::list<std::pair<int, int> >::const_iterator split_it = split_array.begin();
+        while(split_it->second != sorted_it->second)
+            ++split_it;
+        if(split_it->first == -1)
+        {
+            ++insert_max;
+            continue ;
+        }
+        typename std::list<std::pair<int, int> >::iterator low = sorted_array.begin();
+        typename std::list<std::pair<int, int> >::iterator high = low;
+        typename std::list<std::pair<int, int> >::iterator mid;
+        std::advance(high, insert_max);
+        while (low != high)
+        {
+            mid = low;
+            std::advance(mid, std::distance(low, high) / 2);
+            if (split_it->first < mid->second)
+                high = mid;
+            else 
+                low = ++mid;
+        }
+        sorted_array.insert(low, std::make_pair(-1, split_it->first));
+        insert_max += 2;
+    }
+}
