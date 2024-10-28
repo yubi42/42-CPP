@@ -73,9 +73,11 @@ void BitcoinExchange::print_output(std::map<std::string, float> &csv, std::ifstr
         }
         std::getline(line_stream, token, ' ');
         line_stream >> key_value.second;
+        if (token != "|")
+            std::cout << "Error: delimiter invalid." << std::endl;
         if (line_stream.fail() || !line_stream.eof())
             std::cout << "Error: value invalid." << std::endl;
-        if(key_value.second < 0)
+        else if(key_value.second < 0)
             std::cout << "Error: not a positive number." << std::endl;
         else if(static_cast<long>(key_value.second) > INT_MAX)
             std::cout << "Error: too large a number." << std::endl;
@@ -105,20 +107,16 @@ bool BitcoinExchange::check_format(std::ifstream &input_file, std::string &line)
     std::istringstream line_stream(line);
     std::string token;
     std::getline(line_stream, token, '|');
-    if (token != "date ")
-        return false;
-    std::getline(line_stream, token, '|');
-    if (token != " value")
-        return false;
-    std::streampos list_start = input_file.tellg();
-    while(std::getline(input_file, line))
+    if (!token.compare("date "))
     {
-        if (line.find(" | ") == std::string::npos && line.find(" ") != std::string::npos)
-            return (false);  
+        std::getline(line_stream, token, '|');
+        if (!token.compare(" value"))
+            return(true);
+        else
+            return(false);
     }
-    input_file.clear();
-    input_file.seekg(list_start);
-    return (true);
+    else 
+        return(false);
 }
 
 
