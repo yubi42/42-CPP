@@ -70,10 +70,10 @@ public:
         for(size_t i = 1; i < ac; ++i)
         {
             std::istringstream sstream(av[i]);
-            unsigned int value;
+            int value;
             sstream >> value;
-            if(sstream.fail() || !sstream.eof())
-                throw std::invalid_argument("Error: Not an integer");
+            if(sstream.fail() || !sstream.eof() || value <= 0)
+                throw std::invalid_argument("Error: Not an positive integer");
             arr.push_back(value);
         }
     }
@@ -84,9 +84,9 @@ public:
         for(size_t i = 1; i < ac; ++i)
         {
             std::istringstream sstream(av[i]);
-            unsigned int value;
+            int value;
             sstream >> value;
-            if(sstream.fail() || !sstream.eof())
+            if(sstream.fail() || !sstream.eof() || value <= 0)
                 throw std::invalid_argument("Error: Not an integer");
             arr.push_back(std::make_pair(-1, value));
         }
@@ -222,7 +222,17 @@ public:
     void johnsonSort(T &start_array)
     { 
         T sorted_array;
-    
+        if (start_array.size() == 1)
+            return ;
+        else if (start_array.size() == 2)
+        {
+            typename T::iterator it = start_array.begin();
+            typename T::iterator next = start_array.begin();
+            ++next;
+            if(*it > *next)
+                std::swap(*it, *next);
+            return ;
+        }
         johnsonAlgorithm(start_array, sorted_array);
         start_array = sorted_array;
     }
@@ -312,6 +322,17 @@ public:
     template<typename T>
     void johnsonSortPairs(T &array)
     {
+        if (array.size() == 1)
+            return ;
+        else if (array.size() == 2)
+        {
+            typename T::iterator it = array.begin();
+            typename T::iterator next = array.begin();
+            ++next;
+            if(it->second > next->second)
+                std::swap(*it, *next);
+            return ;
+        }
         T sorted_array;
 
         johnsonAlgorithmPairs(array, sorted_array);

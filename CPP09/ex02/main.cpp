@@ -27,6 +27,7 @@ int main(int ac, char **av)
         pmerge.johnsonSort(vec);
         stop_time.second = clock();
         pmerge.displayArr("After:", vec);
+        std::cout << "2 arr instead of 1 arr of pairs:" << std::endl;
         pmerge.displayResults(stop_time, vec);
     }
     {
@@ -49,7 +50,7 @@ int main(int ac, char **av)
         // pmerge.displayArr("After:", lst);
         pmerge.displayResults(stop_time, lst);
     }
-    std::cout << "for testing with 1 arr of pairs instead of 2 arr:" << std::endl;
+    std::cout << "1 arr of pairs instead of 2 arr:" << std::endl;
     {
         std::vector<std::pair<int, int> > lst;
         pmerge.parseInputPairs(ac, av, lst);  

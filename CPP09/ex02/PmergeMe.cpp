@@ -12,11 +12,11 @@ PmergeMe::~PmergeMe() {}
 
 void PmergeMe::johnsonMerge(std::list<int> &small_values, std::list<int> &big_values)
 {
-    typename std::list<int>::iterator it = small_values.begin();
-    typename std::list<int>::iterator small_end = small_values.end();
+    std::list<int>::iterator it = small_values.begin();
+    std::list<int>::iterator small_end = small_values.end();
     while(it != small_end)
     {
-            typename std::list<int>::iterator next_it = it;
+            std::list<int>::iterator next_it = it;
             ++next_it;
             if (next_it != small_end) 
             {
@@ -46,14 +46,14 @@ void PmergeMe::johnsonInsert(std::list<int> &small_values, std::list<int> &big_v
     if(small_values.size() < big_values.size())
         big_values.pop_back();
 
-    typename std::list<int>::iterator sorted_begin = sorted_array.begin();
-    typename std::list<int>::iterator sorted_it = sorted_begin;
-    typename std::list<int>::iterator sorted_end = sorted_array.end();
-    typename std::list<int>::iterator big_begin = big_values.begin();
-    typename std::list<int>::iterator big_end = big_values.end();
-    typename std::list<int>::iterator small_begin = small_values.begin();
-    typename std::list<int>::iterator big_it;
-    typename std::list<int>::iterator small_it;
+    std::list<int>::iterator sorted_begin = sorted_array.begin();
+    std::list<int>::iterator sorted_it = sorted_begin;
+    std::list<int>::iterator sorted_end = sorted_array.end();
+    std::list<int>::iterator big_begin = big_values.begin();
+    std::list<int>::iterator big_end = big_values.end();
+    std::list<int>::iterator small_begin = small_values.begin();
+    std::list<int>::iterator big_it;
+    std::list<int>::iterator small_it;
     int max_range = 0;
     while(sorted_it != sorted_end)
     {
@@ -66,9 +66,9 @@ void PmergeMe::johnsonInsert(std::list<int> &small_values, std::list<int> &big_v
         }
         if (big_it != big_end)
         {
-            typename std::list<int>::iterator low = sorted_begin;
-            typename std::list<int>::iterator high = low;
-            typename std::list<int>::iterator mid;
+            std::list<int>::iterator low = sorted_begin;
+            std::list<int>::iterator high = low;
+            std::list<int>::iterator mid;
             std::advance(high, max_range);
 
             while (low != high)
@@ -90,9 +90,9 @@ void PmergeMe::johnsonInsert(std::list<int> &small_values, std::list<int> &big_v
 void PmergeMe::johnsonInsertPairs(const std::list<std::pair<int, int> > &split_array, std::list<std::pair<int, int> > &sorted_array)
 {
     size_t insert_max = 0;
-    for(typename std::list<std::pair<int, int> >::iterator sorted_it = sorted_array.begin(); sorted_it != sorted_array.end(); ++sorted_it)
+    for(std::list<std::pair<int, int> >::iterator sorted_it = sorted_array.begin(); sorted_it != sorted_array.end(); ++sorted_it)
     {
-        typename std::list<std::pair<int, int> >::const_iterator split_it = split_array.begin();
+        std::list<std::pair<int, int> >::const_iterator split_it = split_array.begin();
         while(split_it->second != sorted_it->second)
             ++split_it;
         if(split_it->first == -1)
@@ -100,9 +100,9 @@ void PmergeMe::johnsonInsertPairs(const std::list<std::pair<int, int> > &split_a
             ++insert_max;
             continue ;
         }
-        typename std::list<std::pair<int, int> >::iterator low = sorted_array.begin();
-        typename std::list<std::pair<int, int> >::iterator high = low;
-        typename std::list<std::pair<int, int> >::iterator mid;
+        std::list<std::pair<int, int> >::iterator low = sorted_array.begin();
+        std::list<std::pair<int, int> >::iterator high = low;
+        std::list<std::pair<int, int> >::iterator mid;
         std::advance(high, insert_max);
         while (low != high)
         {
