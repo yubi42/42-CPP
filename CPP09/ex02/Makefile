@@ -6,12 +6,12 @@
 #    By: yubi42 <yubi42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/25 09:20:26 by yubi42            #+#    #+#              #
-#    Updated: 2024/10/26 15:26:52 by yubi42           ###   ########.fr        #
+#    Updated: 2024/10/29 09:49:13 by yubi42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -I. -g
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -I. # -g -Ofast
 
 NAME = PmergeMe
 

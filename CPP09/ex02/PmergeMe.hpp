@@ -20,39 +20,15 @@ struct TypeName
 };
 
 template<>
-struct TypeName<std::vector<int> > 
-{
-    static std::string name() { return ("std::vector<int>"); }
-};
-
-template<>
 struct TypeName<std::vector<std::pair<int, int> > > 
 {
-    static std::string name() { return ("std::vector<int>"); }
-};
-
-template<>
-struct TypeName<std::deque<int> > 
-{
-    static std::string name() { return ("std::deque<int>"); }
+    static std::string name() { return ("std::vector<std::pair<int, int> >"); }
 };
 
 template<>
 struct TypeName<std::deque<std::pair<int, int> > >
 {
-    static std::string name() { return ("std::deque<int>"); }
-};
-
-template<>
-struct TypeName<std::list<int> > 
-{
-    static std::string name() { return ("std::list<int>"); }
-};
-
-template<>
-struct TypeName<std::list<std::pair<int, int> > >
-{
-    static std::string name() { return ("std::list<int>"); }
+    static std::string name() { return ("std::deque<std::pair<int, int> >"); }
 };
 
 class PmergeMe
@@ -72,21 +48,7 @@ public:
             std::istringstream sstream(av[i]);
             int value;
             sstream >> value;
-            if(sstream.fail() || !sstream.eof() || value <= 0)
-                throw std::invalid_argument("Error: Not an positive integer");
-            arr.push_back(value);
-        }
-    }
-
-    template<typename T>
-    void parseInputPairs(size_t ac, char **av, T &arr) 
-    {
-        for(size_t i = 1; i < ac; ++i)
-        {
-            std::istringstream sstream(av[i]);
-            int value;
-            sstream >> value;
-            if(sstream.fail() || !sstream.eof() || value <= 0)
+            if(sstream.fail() || !sstream.eof() || value < 0)
                 throw std::invalid_argument("Error: Not an integer");
             arr.push_back(std::make_pair(-1, value));
         }
@@ -109,170 +71,81 @@ public:
         typename T::const_iterator end = arr.end();
         for(typename T::const_iterator it = arr.begin(); it != end; ++it)
         {
-            std::cout << *it << ' ';
-        }
-        std::cout << std::endl;
-    }
-
-    template<typename T>
-    void displayArrPairs(std::string message, const T &arr)
-    {
-        std::cout << message << ' ';
-        typename T::const_iterator end = arr.end();
-        for(typename T::const_iterator it = arr.begin(); it != end; ++it)
-        {
             std::cout << it->second << ' ';
         }
         std::cout << std::endl;
     }
 
-    void johnsonMerge(std::list<int> &small_values, std::list<int> &big_values);
+    std::vector<size_t> generateJacobsthalArray(size_t limit);
 
     template<typename T>
-    void johnsonMerge(T &small_values, T &big_values)
+    size_t binarySearchValue(size_t cur_arr_pos, size_t inserted_count, int insert_value, const T &sorted_array)
     {
-        size_t small_size = small_values.size();
-        size_t len = small_size / 2;
-        for(size_t i = 0; i < len; ++i)
+        size_t low = 0;
+        size_t high = cur_arr_pos + inserted_count;
+        size_t mid;
+        while (low != high)
         {
-            if (small_values[i] > small_values[i + 1]) 
-            {
-                big_values.push_back(small_values[i]);
-                small_values.erase(small_values.begin() + i);
-            } 
+            mid = low + ((high - low) / 2);
+            if (insert_value < sorted_array[mid].second)
+                high = mid;
             else 
-            {
-                big_values.push_back(small_values[i + 1]);
-                small_values.erase(small_values.begin() + i + 1);
-            }
+                low = ++mid;
         }
-        if (small_size % 2)
-        {
-            big_values.push_back(small_values[len]);
-            small_values.erase(small_values.end() - 1);
-        }
-        // displayArr("small array:", small_values);
-        // displayArr("big array:", big_values);
+        return (low);
     }
 
-    void johnsonInsert(std::list<int> &small_values, std::list<int> &big_values, std::list<int> &sorted_array);
-
     template<typename T>
-    void johnsonInsert(T &small_values, T &big_values, T &sorted_array)
+    int findInsertValue(const T &split_array, int corresponding_value)
     {
-        if(small_values.size() < big_values.size())
-            big_values.pop_back();
-    
-        size_t end_len = sorted_array.size() + small_values.size();
-        size_t big_len = big_values.size();
-        size_t j;
-        for(size_t i = 0; i < end_len; ++i)
-        {
-            j = 0;
-            while(j < big_len && sorted_array[i] != big_values[j])
-                ++j;
-            if(j != big_len)
-            {
-                size_t low = 0;
-                size_t high = i;
-                size_t mid;
-                while (low != high)
-                {
-                    mid = low + ((high - low) / 2);
-                    if (small_values[j] < sorted_array[mid])
-                        high = mid;
-                    else 
-                        low = ++mid;
-                }
-                sorted_array.insert(sorted_array.begin() + low, small_values[j]);
-                ++i;
-            }
-        }
-    }
-    
-    template<typename T>
-    void johnsonAlgorithm(T small_values, T &sorted_array)
-    {
-        T big_values;
-        johnsonMerge(small_values, big_values);
-        size_t big_values_size = big_values.size();
-        if(big_values_size > 2)
-            johnsonAlgorithm(big_values, sorted_array);
-        else if(big_values_size == 2) 
-        {
-            typename T::iterator big_it = big_values.begin();
-            typename T::iterator big_next = big_values.begin();
-            ++big_next;
-
-            if(*big_it < *big_next)
-            {
-                sorted_array.push_back(*big_it);
-                sorted_array.push_back(*big_next);
-            }
-            else
-            {
-                sorted_array.push_back(*big_next);
-                sorted_array.push_back(*big_it);
-            }
-        }
-        johnsonInsert(small_values, big_values, sorted_array);
+        size_t k = 0;
+        while(split_array[k].second != corresponding_value)
+            ++k;
+        return (split_array[k].first);
     }
 
     template<typename T>
-    void johnsonSort(T &start_array)
-    { 
-        T sorted_array;
-        if (start_array.size() == 1)
-            return ;
-        else if (start_array.size() == 2)
-        {
-            typename T::iterator it = start_array.begin();
-            typename T::iterator next = start_array.begin();
-            ++next;
-            if(*it > *next)
-                std::swap(*it, *next);
-            return ;
-        }
-        johnsonAlgorithm(start_array, sorted_array);
-        start_array = sorted_array;
-    }
-
-    void johnsonInsertPairs(const std::list<std::pair<int, int> > &split_array, std::list<std::pair<int, int> > &sorted_array);
-
-    template<typename T>
-    void johnsonInsertPairs(const T &split_array, T &sorted_array)
+    void johnsonInsert(const T &split_array, T &sorted_array)
     {
         size_t split_len = split_array.size();
-        size_t end_len = sorted_array.size() + split_len;
-        size_t j;
-        for(size_t i = 0; i < end_len; ++i)
+        std::vector<size_t> jacobsthal = generateJacobsthalArray(split_len);
+        T sorted_copy = sorted_array;
+        int inserted_count = 0;
+
+        // handle first element
+        int insert_value = findInsertValue(split_array, sorted_copy[0].second);
+        if (insert_value != -1)
         {
-            j = 0;
-            while(split_array[j].second != sorted_array[i].second)
-                ++j;
-            if(split_array[j].first == -1)
+            sorted_array.insert(sorted_array.begin(), std::make_pair(-1, insert_value));
+            ++inserted_count;            
+        }
+
+        // handle within jacobsthal
+        for (size_t i = 3; i < jacobsthal.size(); ++i) // 3 because we start at index 2 of jacobsthal (but we already insearted the first element, so we need 3) 0 1 1 3 5 11 21 ...
+        {
+            for (size_t j = jacobsthal[i] - 1; j > jacobsthal[i - 1] - 1; --j) // -1 because we want index instead of position
             {
-                --end_len;
-                continue ;
+                insert_value = findInsertValue(split_array, sorted_copy[j].second);
+                if (insert_value == -1)
+                    continue;
+                sorted_array.insert(sorted_array.begin() + binarySearchValue(j, inserted_count, insert_value, sorted_array), std::make_pair(-1, insert_value));
+                ++inserted_count;
             }
-            size_t low = 0;
-            size_t high = i;
-            size_t mid;
-            while (low != high)
-            {
-                mid = low + ((high - low) / 2);
-                if (split_array[j].first < sorted_array[mid].second)
-                    high = mid;
-                else 
-                    low = ++mid;
-            }
-            sorted_array.insert(sorted_array.begin() + low, std::make_pair(-1, split_array[j].first));
-            ++i;
-        }      
-    }
+        }
+
+        // handle exceeding jacobsthal numbers (starting from the back)
+        for (size_t j = sorted_copy.size() - 1; j > jacobsthal[jacobsthal.size() - 1] - 1; --j)
+        {
+                insert_value = findInsertValue(split_array, sorted_copy[j].second);
+                if (insert_value == -1)
+                    continue;
+                sorted_array.insert(sorted_array.begin() + binarySearchValue(j, inserted_count, insert_value, sorted_array), std::make_pair(-1, insert_value));
+                ++inserted_count;
+        }
+    } 
 
     template<typename T>
-    void johnsonMergePairs(const T &array, T &split_array)
+    void johnsonMerge(const T &array, T &split_array)
     {
         for(typename T::const_iterator it = array.begin(); it != array.end(); ++it)
         {
@@ -293,13 +166,13 @@ public:
     }
 
     template<typename T>
-    void johnsonAlgorithmPairs(const T &array, T &sorted_array)
+    void johnsonAlgorithm(const T &array, T &sorted_array)
     {
         T split_array;
-        johnsonMergePairs(array, split_array);
+        johnsonMerge(array, split_array);
         size_t split_array_size = split_array.size();
         if(split_array_size > 2)
-            johnsonAlgorithmPairs(split_array, sorted_array);
+            johnsonAlgorithm(split_array, sorted_array);
         else
         {
             typename T::iterator it = split_array.begin();
@@ -316,11 +189,11 @@ public:
                 sorted_array.push_back(std::make_pair(-1, value1));
             }
         }
-        johnsonInsertPairs(split_array, sorted_array);
+        johnsonInsert(split_array, sorted_array);
     }
 
     template<typename T>
-    void johnsonSortPairs(T &array)
+    void johnsonSort(T &array)
     {
         if (array.size() == 1)
             return ;
@@ -335,7 +208,8 @@ public:
         }
         T sorted_array;
 
-        johnsonAlgorithmPairs(array, sorted_array);
+        johnsonAlgorithm(array, sorted_array);
         array = sorted_array;
     }
+
 };
