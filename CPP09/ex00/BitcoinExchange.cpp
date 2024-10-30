@@ -55,7 +55,6 @@ float BitcoinExchange::calc_exchange(std::map<std::string, float> &csv, std::pai
     if (it != csv.begin())
         --it;
     return(key_value.second * it->second);
-    
 }
 
 void BitcoinExchange::print_output(std::map<std::string, float> &csv, std::ifstream &input_file, std::string &line)
@@ -79,7 +78,7 @@ void BitcoinExchange::print_output(std::map<std::string, float> &csv, std::ifstr
             std::cout << "Error: value invalid." << std::endl;
         else if(key_value.second < 0)
             std::cout << "Error: not a positive number." << std::endl;
-        else if(static_cast<long>(key_value.second) > INT_MAX)
+        else if(key_value.second > 1000)
             std::cout << "Error: too large a number." << std::endl;
         else 
             std::cout <<  key_value.first <<  " => " << key_value.second << " = " << calc_exchange(csv, key_value) << std::endl;

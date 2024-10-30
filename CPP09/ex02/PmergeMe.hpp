@@ -41,6 +41,17 @@ public:
     virtual ~PmergeMe();
 
     template<typename T>
+    bool isDuplicate(const int &value, const T &arr)
+    {
+        for (typename T::const_iterator it = arr.begin(); it != arr.end(); ++it)
+        {
+            if (it->second == value)
+                return true;
+        }
+        return false;
+    }
+
+    template<typename T>
     void parseInput(size_t ac, char **av, T &arr) 
     {
         for(size_t i = 1; i < ac; ++i)
@@ -49,8 +60,9 @@ public:
             int value;
             sstream >> value;
             if(sstream.fail() || !sstream.eof() || value < 0)
-                throw std::invalid_argument("Error: Not an integer");
-            arr.push_back(std::make_pair(-1, value));
+                throw std::invalid_argument("Error: Not an positive integer");
+            if (!isDuplicate(value, arr))  // No Duplicates!
+                arr.push_back(std::make_pair(-1, value));
         }
     }
 
@@ -76,7 +88,7 @@ public:
         std::cout << std::endl;
     }
 
-    std::vector<size_t> generateJacobsthalArray(size_t limit);
+    std::vector<int> generateJacobsthalArray(int limit);
 
     template<typename T>
     size_t binarySearchValue(size_t cur_arr_pos, size_t inserted_count, int insert_value, const T &sorted_array)
@@ -108,22 +120,15 @@ public:
     void johnsonInsert(const T &split_array, T &sorted_array)
     {
         size_t split_len = split_array.size();
-        std::vector<size_t> jacobsthal = generateJacobsthalArray(split_len);
+        std::vector<int> jacobsthal = generateJacobsthalArray(split_len);
         T sorted_copy = sorted_array;
         int inserted_count = 0;
-
-        // handle first element
-        int insert_value = findInsertValue(split_array, sorted_copy[0].second);
-        if (insert_value != -1)
-        {
-            sorted_array.insert(sorted_array.begin(), std::make_pair(-1, insert_value));
-            ++inserted_count;            
-        }
+        int insert_value;
 
         // handle within jacobsthal
-        for (size_t i = 3; i < jacobsthal.size(); ++i) // 3 because we start at index 2 of jacobsthal (but we already insearted the first element, so we need 3) 0 1 1 3 5 11 21 ...
+        for (size_t i = 1; i < jacobsthal.size(); ++i) // jacobsthal: 0, 1, 1, 5, 11, 21, 43 ... n = (2x(n-2) + (n-1))
         {
-            for (size_t j = jacobsthal[i] - 1; j > jacobsthal[i - 1] - 1; --j) // -1 because we want index instead of position
+            for (int j = (static_cast<int>(sorted_copy.size()) > jacobsthal[i] ? jacobsthal[i] - 1 : sorted_copy.size() - 1); j > jacobsthal[i - 1] - 1; --j) // from each jacobsnumber inseart backwards until previos jacobs number
             {
                 insert_value = findInsertValue(split_array, sorted_copy[j].second);
                 if (insert_value == -1)
@@ -131,16 +136,6 @@ public:
                 sorted_array.insert(sorted_array.begin() + binarySearchValue(j, inserted_count, insert_value, sorted_array), std::make_pair(-1, insert_value));
                 ++inserted_count;
             }
-        }
-
-        // handle exceeding jacobsthal numbers (starting from the back)
-        for (size_t j = sorted_copy.size() - 1; j > jacobsthal[jacobsthal.size() - 1] - 1; --j)
-        {
-                insert_value = findInsertValue(split_array, sorted_copy[j].second);
-                if (insert_value == -1)
-                    continue;
-                sorted_array.insert(sorted_array.begin() + binarySearchValue(j, inserted_count, insert_value, sorted_array), std::make_pair(-1, insert_value));
-                ++inserted_count;
         }
     } 
 
