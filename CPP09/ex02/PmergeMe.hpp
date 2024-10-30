@@ -125,7 +125,6 @@ public:
         int inserted_count = 0;
         int insert_value;
 
-        // handle within jacobsthal
         for (size_t i = 1; i < jacobsthal.size(); ++i) // jacobsthal: 0, 1, 1, 5, 11, 21, 43 ... n = (2x(n-2) + (n-1))
         {
             for (int j = (static_cast<int>(sorted_copy.size()) > jacobsthal[i] ? jacobsthal[i] - 1 : sorted_copy.size() - 1); j > jacobsthal[i - 1] - 1; --j) // from each jacobsnumber inseart backwards until previos jacobs number
