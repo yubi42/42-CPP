@@ -31,7 +31,6 @@ The **42 C++ Modules** are a series of projects designed to introduce students t
 ### **Module 04 - Subtype Polymorphism**
 - Understanding polymorphism in depth
 - Virtual destructors
-- The importance of the `override` keyword
 
 ### **Module 05 - Exceptions and Error Handling**
 - Understanding exceptions in C++
@@ -53,9 +52,6 @@ The **42 C++ Modules** are a series of projects designed to introduce students t
 - Using `std::algorithm` for efficient processing
 
 ### **Module 09 - Advanced Topics**
-- Smart pointers (`unique_ptr`, `shared_ptr`, `weak_ptr`)
-- Multithreading basics (`std::thread`)
-- Advanced memory management techniques
 
 ## Contributors
 - [yubi42](https://github.com/yubi42)
