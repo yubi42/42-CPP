@@ -53,6 +53,12 @@ The **42 C++ Modules** are a series of projects designed to introduce students t
 
 ### **Module 09 - Advanced Topics**
 
+- Processing data with STL containers
+- Implementing custom algorithms
+- Reverse Polish Notation (RPN) calculator
+- Bitcoin price evaluation using historical data
+- Merge-insert sort (Ford-Johnson algorithm)
+
 ## Contributors
 - [yubi42](https://github.com/yubi42)
 
